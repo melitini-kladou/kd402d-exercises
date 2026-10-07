@@ -25,7 +25,7 @@ function playRiff(start) {
   synth.triggerAttackRelease("B5", "8n", start + 0.5);
   synth.triggerAttackRelease("D4", "8n", start + 1);
   // TODO 3: add a fourth note at start + 1.5
-  synth.triggerAttackRelease("C4", "8n", start + 1.5);
+  synth.triggerAttackRelease("C4, "8n", start + 1.5);
 }
 
 // The whole song, timed from start.

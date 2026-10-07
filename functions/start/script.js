@@ -9,7 +9,7 @@ function greet(name) {
   return "Hello, " + name + "!";
 }
 
-console.log(greet("Ana"));
+console.log(greet("Melina"));
 
 // TODO 1: call greet with your own name and log what it gives back.
 

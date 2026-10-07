@@ -30,8 +30,18 @@ function playRiff(start) {
 
 // The whole song, timed from start.
 function song(start) {
-  playRiff(start);
+  playRiff(start + 2);
+ synth.triggerAttackRelease("B4", "8n", start);
+  synth.triggerAttackRelease("C5", "8n", start + 0.5);
+  synth.triggerAttackRelease("C4", "8n", start + 1);
+  synth.triggerAttackRelease("A4", "8n", start + 1.5);
+}
+
+  // TODO 3: add a fourth note at start + 1.5
+
+
   // TODO 4: call playRiff again, two seconds after the first one
+playRiff(start + 4);
 }
 
 // ---------- You don't need to change anything below this line ----------

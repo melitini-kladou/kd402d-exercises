@@ -1,10 +1,11 @@
 // Exercise 8: bug hunt
 
 // The octave arrives as text, the way it would from a text box on a web page.
-const typedOctave = "4";
+const typedOctave = 4;
 const noteUp = "C" + (typedOctave + 1);
 const noteDown = "C" + (typedOctave - 1);
-
+console.log(noteUp);
+console.log(noteDown);
 // TODO 8a: predict what noteUp and noteDown hold. Then log them and play exercise 8.
 // TODO 8b: one note is wildly wrong. Why? Fix noteUp so it really is one octave up.
 

@@ -6,10 +6,10 @@
 // The length is one we change, so let.
 const note = "C4";
 let duration = "8n";
-
+let isMuted = false;
 duration = "2n"; // changing a let is fine
 // note = "D4";  // changing a const stops the script: TypeError: Assignment to constant variable.
-
+console.log("Excercise 1: isMuted is" + isMuted);
 function exercise1(start) {
   synth.triggerAttackRelease(note, duration, start);
   synth.triggerAttackRelease("E4", "8n", start + 0.5);

@@ -8,12 +8,17 @@ function exercise4(start) {
   // TODO 4a: predict, then log both:
   //            console.log("Exercise 4: typedOctave == octave is " + (typedOctave == octave));
   //            console.log("Exercise 4: typedOctave === octave is " + (typedOctave === octave));
+  // I predict is true.
+  // I predict is false.
+  console.log("Excercise 4: typedOctave == octave is " + (typedOctave == octave));
+  console.log("Excercise 4: typeOctave === is " + (typedOctave === octave));
   // TODO 4b: one of them says "4" and 4 are the same. Which one? Is it telling you the truth?
-  //          Write your answer in a comment here:
+  //          Write your answer in a comment here:// typedOctave == octave says that "4" and 4 are the same. The typedOctave === octave tels the truth.
   // TODO 4c: turn the text into a number first, then compare with three equals signs:
   //            Number(typedOctave) === octave
   //          Log it. When you know both sides are the same kind of value, === gives the honest answer.
-
+  Number ("3");
+console.log("Excercise 4: Number(typedOctave) === octave is " + (Number(typedOctave) === octave));
   synth.triggerAttackRelease("C" + octave, "8n", start);
 }
 

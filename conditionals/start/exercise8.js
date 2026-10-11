@@ -7,14 +7,15 @@ function exercise8(start) {
 
   // TODO 8a: as the first line of each block, log which block ran and why, for example:
   //            console.log("Exercise 8: playing the slow pattern because bpm is " + bpm);
-  // TODO 8b: press the button. Which block ran? Is it the one you expected for 150?
+  console.log("Excercise 8: playing the slow pattern because bpm is " + bpm);
+  // TODO 8b: press the button. Which block ran? Is it the one you expected for 150? // yes
   // TODO 8c: fix the order of the questions, so 150 plays the fast pattern and 90 still plays
   //          the middle one. Then test 50, 90 and 150.
-  if (bpm > 60) {
+  if (bpm > 150) {
     // middle: two notes
     synth.triggerAttackRelease("C4", "8n", start);
     synth.triggerAttackRelease("E4", "8n", start + 0.25);
-  } else if (bpm > 120) {
+  } else if (bpm > 90) {
     // fast: four high notes
     synth.triggerAttackRelease("C5", "16n", start);
     synth.triggerAttackRelease("E5", "16n", start + 0.125);

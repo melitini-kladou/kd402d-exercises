@@ -1,5 +1,5 @@
 // User input · Block 1: listening for keys
-// Exercises 1 to 4. After each one: save, click the page, press keys, check the console, and commit.
+// Exercises 1 to 4. After each one: save, click tfhe page, press keys, check the console, and commit.
 // Click the page (not the console) before you press keys: only the page hears them.
 
 // The instrument: plays one note at a time.
@@ -7,13 +7,33 @@ const synth = new Tone.Synth().toDestination();
 
 // ---------- Exercise 1: hear the event ----------
 // 1a Before you press anything, write down what you think event.key will be for:
-//    a   7   the space bar   Shift   the up arrow
-// 1b Click the page and press them. Was each one what you expected?
-document.addEventListener("keydown", function (event) {
+//    a   7   the space bar   Shift   the up arrow // a -> "a", 7 -> 7, space -> "", shift -> shift
+// 1b Click the page and press them. Was each one what you expected? //Yes.
+document.addEventListener("keydown", handleKeyDown); {
   Tone.start(); // sound can only start after a key press or a click
   console.log(event.key);
-});
+  if (event.key === "a") {
+    synth.triggerAttackRelease("C4", "8n")
+  } else if (event.key === "s") {
+    synth.triggerAttackRelease("D4", "8n");
+  } else if (event.key === "d") {
+    synth.triggerAttackRelease("E4", "8n");
+  }
 
+};
+
+function handleKeyDown (event) {
+  Tone.start(); // sound can only start after a key press or a click
+  console.log(event.key);
+  if (event.key === "a") {
+    synth.triggerAttackRelease("C4", "8n")
+  } else if (event.key === "s") {
+    synth.triggerAttackRelease("D4", "8n");
+  } else if (event.key === "d") {
+    synth.triggerAttackRelease("E4", "8n");
+  }
+
+};
 // ---------- Exercise 2: one key, one sound ----------
 // TODO 2: inside the listener above, under the console.log, play "C4" when the key is "a":
 //           if (event.key === "a") {

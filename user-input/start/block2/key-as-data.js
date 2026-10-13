@@ -9,20 +9,24 @@ const synth = new Tone.Synth().toDestination();
 let octave = 4;
 
 function handleKeyDown(event) {
-  Tone.start(); // sound can only start after a key press or a click
-  console.log(event.key);
+  Tone.start();// sound can only start after a key press or a click
 
-  if (event.key.length === 1 && event.key >= "a" && event.key <= "g") { //event.key.length === 1, checks how many times the button should be pressed.
-    const note = event.key.toUpperCase() + octave;
-    synth.triggerAttackRelease(note, "8n");
+  let playOctave = octave;
+  if (event.shiftKey) {
+    playOctave = octave + 1;
   }
+  const key = event.key.toLowerCase();
+  const note = noteForKey(key, playOctave);
+   if (note !== "") {
+  synth.triggerAttackRelease(note, "8n");
+ }
 }
 
 document.addEventListener("keydown", handleKeyDown);
-console.log("c" >= "a");
+/*console.log("c" >= "a");
 console.log("h" <= "g");
 console.log("Enter" >= "a");
-console.log("Enter".length === 1);g
+console.log("Enter".length === 1);*/
 // ---------- Exercise 5: keys are note names ----------
 // The letter IS the note: press c, hear C.
 // 5a Predict first, in a comment: what do these give? Strings compare in alphabetical order.
@@ -46,9 +50,33 @@ console.log("Enter".length === 1);g
 //                return key.toUpperCase() + oct;
 //              }
 //              return "";
-//            }
+// }
+function letterNote(key, oct) {
+if (key.length === 1 && key >= "a" && key <= "g") { //event.key.length === 1, checks how many times the button should be pressed.
+    return key.toUpperCase() + oct;
+  }
+  return "";
+}
+
 // TODO 6b: write noteForKey(key, oct) next to it. Use if / else if: "a" gives back "C" + oct,
 //          "s" gives back "D" + oct … and "k" gives back "C" + (oct + 1). Any other key: "".
+   function noteForKey(key, oct) {
+    if (key === "a"){return "C" + oct};
+    if (key === "s"){return "D" + oct};
+    if (key === "d"){return "E" + oct};
+    if (key === "f"){return "F" + oct};
+    if (key === "g"){return "G" + oct};
+    if (key === "h"){return "A" + oct};
+    if (key === "j"){return "B" + oct};
+    if (key === "k"){return "C" + (oct + 1)};
+   return "";
+   }
+
+let playOctave = octave;
+if (event.shiftKey) {
+  playOctave = octave + 1;
+}
+
 // TODO 6c: in handleKeyDown, ask noteForKey, and play only if the answer isn't "":
 //            const note = noteForKey(event.key, octave);
 //            if (note !== "") {
@@ -59,7 +87,7 @@ console.log("Enter".length === 1);g
 
 // ---------- Exercise 7: Shift for an octave ----------
 // event.shiftKey is a boolean: true while Shift is held down.
-// 7a Predict, then check in the console: what is event.key when you hold Shift and press a?
+// 7a Predict, then check in the console: what is event.key when you hold Shift and press a?// the note is one octave up. C5 plays.
 // TODO 7b: play one octave higher while Shift is held:
 //            let playOctave = octave;
 //            if (event.shiftKey) {

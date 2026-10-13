@@ -9,20 +9,10 @@ const synth = new Tone.Synth().toDestination();
 // 1a Before you press anything, write down what you think event.key will be for:
 //    a   7   the space bar   Shift   the up arrow // a -> "a", 7 -> 7, space -> "", shift -> shift
 // 1b Click the page and press them. Was each one what you expected? //Yes.
-document.addEventListener("keydown", handleKeyDown); {
-  Tone.start(); // sound can only start after a key press or a click
-  console.log(event.key);
-  if (event.key === "a") {
-    synth.triggerAttackRelease("C4", "8n")
-  } else if (event.key === "s") {
-    synth.triggerAttackRelease("D4", "8n");
-  } else if (event.key === "d") {
-    synth.triggerAttackRelease("E4", "8n");
-  }
 
-};
 
 function handleKeyDown (event) {
+   console.log("handleKeyDown was called");
   Tone.start(); // sound can only start after a key press or a click
   console.log(event.key);
   if (event.key === "a") {
@@ -34,6 +24,7 @@ function handleKeyDown (event) {
   }
 
 };
+document.addEventListener("keydown", handleKeyDown);
 // ---------- Exercise 2: one key, one sound ----------
 // TODO 2: inside the listener above, under the console.log, play "C4" when the key is "a":
 //           if (event.key === "a") {

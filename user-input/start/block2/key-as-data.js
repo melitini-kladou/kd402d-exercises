@@ -20,9 +20,14 @@ function handleKeyDown(event) {
    if (note !== "") {
   synth.triggerAttackRelease(note, "8n");
  }
-}
+
 
 document.addEventListener("keydown", handleKeyDown);
+console.log("event:");
+console.log("Key " + event.key + "played" + note);
+console.log("event.shiftKey:");
+console.log("Key Enter plays nothing");
+}
 /*console.log("c" >= "a");
 console.log("h" <= "g");
 console.log("Enter" >= "a");
@@ -72,10 +77,7 @@ if (key.length === 1 && key >= "a" && key <= "g") { //event.key.length === 1, ch
    return "";
    }
 
-let playOctave = octave;
-if (event.shiftKey) {
-  playOctave = octave + 1;
-}
+
 
 // TODO 6c: in handleKeyDown, ask noteForKey, and play only if the answer isn't "":
 //            const note = noteForKey(event.key, octave);

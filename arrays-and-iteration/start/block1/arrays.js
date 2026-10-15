@@ -25,10 +25,20 @@ console.log(melody[4]);
 // TODO 2a: make an empty array and log its length:
 //            let riff = [];
 //            console.log(riff.length);
+let riff = [];
+console.log(riff.length);
 // TODO 2b: add four notes to the end, one at a time:  riff.push("C4");
 //          Log riff.length after each push. Predict each number first.
+riff.push("C4");
+console.log(riff.length);// 1.
+riff.push("C4");
+console.log(riff.length);// 2.
+riff.push("G4");
+console.log(riff.length);//3
+riff.push("G4");
+console.log(riff.length)// 4.
 // 2c In a comment: when would you start from [] instead of writing all the notes out?
-
+// Use [] when you don't have the notes yet and plan to add them later.
 // ---------- Exercise 3: add at the front too ----------
 // TODO 3a: start from two notes, add one to the front and one to the end:
 //            let chord = ["E4", "G4"];

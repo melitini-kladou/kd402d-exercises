@@ -31,8 +31,8 @@ function playMelody() {
   //
   // ---------- Exercise 6: break it on purpose, at the end ----------
   // TODO 6a: change  i < melody.length  to  i <= melody.length.
-  //          Predict first: how many passes now? What does the last one log?
-  // TODO 6b: run it. In a comment: what is melody[4], and why? Is there an error?
+  //          Predict first: how many passes now? What does the last one log?// 4 pases, it logs undefined.
+  // TODO 6b: run it. In a comment: what is melody[4], and why? Is there an
   //          Then put it back to <.
   //
   // ---------- Exercise 7: break it at the start ----------

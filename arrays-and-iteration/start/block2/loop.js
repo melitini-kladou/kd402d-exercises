@@ -8,7 +8,7 @@ const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 // This morning's melody.
 let melody = ["C4", "E4", "G4", "B4"];
 // TODO 8b: push a fifth note here, under the list (exercise 8).
-
+melody.push("C5");
 
 // Plays every note in melody. Exercise 5 writes the loop inside it.
 function playMelody() {
@@ -22,7 +22,7 @@ function playMelody() {
   // TODO 5b: write the loop. The body has two lines:
   //            console.log("pass " + i + ": " + melody[i]);
   //            synth.triggerAttackRelease(melody[i], "8n");
-     for (let i = 0; i < melody.length; i++) {
+     for (let i = 1; i < melody.length; i++) {
        console.log("pass" + i + ": " + melody[i]);
       synth.triggerAttackRelease(melody[i], "8n");
      }
@@ -43,8 +43,8 @@ function playMelody() {
 // ---------- Exercise 8: fix it, then make the melody longer ----------
 // TODO 8a: check your loop is back to  let i = 0  and  i < melody.length.
 // TODO 8b: push a fifth note onto melody, under the list at the top:  melody.push("C5");
-//          Don't touch the loop. Predict how many passes, then run it.
-// 8c In one sentence, in a comment: why did the same loop work for five notes?
+//          Don't touch the loop. Predict how many passes, then run it. //4 passes?
+// 8c In one sentence, in a comment: why did the same loop work for five notes? // because the counter i is set to 1, i = 1, so we start from index 1 not 0.
 
 // ---------- Controls ----------
 function keyDown(event) {

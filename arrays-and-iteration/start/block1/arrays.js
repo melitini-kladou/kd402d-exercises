@@ -59,8 +59,13 @@ console.log(chord[3]);
 // Arrays hold any kind of value, not only note names. You'll use these for timing in block 4.
 // TODO 4a: let steps = [0.2, 0.4, 0.6, 0.8];
 //          Predict steps[2], then log it.
+let steps = [0.2, 0.4, 0.6, 0.8];
+console.log(steps[2]);
 // TODO 4b: predict, then log:  steps[1] + steps[2]
 //          Is it a number or a string? How can you tell from the console?
+console.log(steps[1] + steps[2]);// It is a number, the number 1.
 // 4c One more way to make an empty array, so you recognise it when you see it:
 //      let empty = new Array();
 //    It means the same as []. Log empty.length. In your own code, write [].
+let empty = new Array();
+console.log(empty.length);

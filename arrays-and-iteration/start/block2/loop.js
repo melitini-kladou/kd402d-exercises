@@ -9,6 +9,7 @@ const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 let melody = ["C4", "E4", "G4", "B4"];
 // TODO 8b: push a fifth note here, under the list (exercise 8).
 
+
 // Plays every note in melody. Exercise 5 writes the loop inside it.
 function playMelody() {
   // ---------- Exercise 5: the loop, from its shape ----------
@@ -17,10 +18,14 @@ function playMelody() {
   //   test:   i < melody.length
   //   step:   i++
   //   body:   log the pass, then play the note at position i
-  // TODO 5a: before you write it, predict in a comment: how many passes, which notes?
+  // TODO 5a: before you write it, predict in a comment: how many passes, which notes?// 5 passes, the four notes that we have?
   // TODO 5b: write the loop. The body has two lines:
   //            console.log("pass " + i + ": " + melody[i]);
   //            synth.triggerAttackRelease(melody[i], "8n");
+     for (let i = 0; i < melody.length; i++) {
+       console.log("pass" + i + ": " + melody[i]);
+      synth.triggerAttackRelease(melody[i], "8n");
+     }
   // 5c Press a key. The notes all start at the same moment: you hear a chord, not a tune.
   //    The loop doesn't wait between passes. Block 4 spreads the notes out.
   //

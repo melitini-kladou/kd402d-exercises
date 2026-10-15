@@ -10,11 +10,16 @@ let melody = ["C4", "E4", "G4", "B4"];
 // 1a Predict, in a comment: what do these three log?
 //      melody        melody.length        melody[0]
 // TODO 1b: log them, one console.log each:
-//            console.log(melody);
-//          Were the length and the first index what you expected?
+console.log(melody);// It will play the melody.
+console.log(melody.length);// It logs 4.
+console.log(melody[0]);// It plays the first note, C4.
+//          Were the length and the first index what you expected? // Yes.
 // TODO 1c: log the last note twice: once as melody[3], once as melody[melody.length - 1].
 //          In a comment: why is the last index 3, when there are 4 notes?
-// 1d Predict: what does melody[4] log? Check.
+console.log(melody[3]);
+console.log(melody[melody.lenght - 1]);
+// 1d Predict: what does melody[4] log? Check.// undefined?
+console.log(melody[4]);
 
 // ---------- Exercise 2: start empty, build it up ----------
 // TODO 2a: make an empty array and log its length:

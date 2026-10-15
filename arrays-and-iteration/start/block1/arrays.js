@@ -44,9 +44,16 @@ console.log(riff.length)// 4.
 //            let chord = ["E4", "G4"];
 //            chord.unshift("C4");
 //            chord.push("B4");
+let chord = ["E4", "G4"];
+chord.unshift("C4");
+chord.push("B4");
 // 3b Before you log anything: what is the index of "E4" now? Of "B4"? Write it in a comment.
+// "E4" = [1], "B4" = [3]
 // TODO 3c: log chord, chord[1] and chord[3] to check.
 //          In a comment: which notes changed their index, and why?
+console.log(chord);
+console.log(chord[1]);
+console.log(chord[3]);
 
 // ---------- Exercise 4: an array of numbers ----------
 // Arrays hold any kind of value, not only note names. You'll use these for timing in block 4.

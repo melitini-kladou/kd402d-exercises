@@ -14,7 +14,7 @@ let melody = ["C4", "E4", "G4", "B4"];
 function playMelody() {
   for (let i = 0; i < melody.length; i++) {
     console.log("pass " + i + ": " + melody[i] + i * 0.4);
-    synth.triggerAttackRelease(melody[i], "8n", Tone.now() + i * 0.4);
+    synth.triggerAttackRelease(melody[i], "8n", Tone.now() + i * 0.2);
   }
 }
 

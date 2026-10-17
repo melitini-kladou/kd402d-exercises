@@ -45,7 +45,19 @@ let short = ["E4", "C4", "G4", "C4"];
 //             i | short[i] | count at the start
 //             0 | "E4"     | 0
 //             1 | ...
+/*  i | short[i] | count at the start
+    0 | "E4"     | 0
+    1 | "C4"     | 0
+    2 | "G4"     | 1
+    3 | "C4"     | 1*/
 //           Then write what is logged after the loop.
 // TODO 11b: only now, write the loop that counts "C4" in short, and log the count after it.
 //           Add  console.log(i, short[i], countShort);  as the first line of the body
 //           to check your table, pass by pass.
+for (i=0; i < short.length; i++) {
+   console.log(i, short[i], countShort);
+   if (short[i] === "C4") {
+    countShort++;
+   }
+}
+console.log("C4 comes " + countShort + " times");

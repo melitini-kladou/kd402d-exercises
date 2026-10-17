@@ -8,12 +8,13 @@ const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 let melody = ["C4", "E4", "G4", "B4"];
 // TODO 14a: a second, longer list:  let bass = ["A2", "C3", "E3", "A3", "C4"];
+//let bass = ["A2", "C3", "E3", "A3", "C4"];
 
 // Plays every note in melody. All the notes start at once.
 function playMelody() {
   for (let i = 0; i < melody.length; i++) {
-    console.log("pass " + i + ": " + melody[i]);
-    synth.triggerAttackRelease(melody[i], "8n");
+    console.log("pass " + i + ": " + melody[i] + i * 0.4);
+    synth.triggerAttackRelease(melody[i], "8n", Tone.now() + i * 0.4);
   }
 }
 
@@ -21,10 +22,11 @@ function playMelody() {
 // triggerAttackRelease takes a third value: when the note starts, in seconds.
 // Tone.now() is "now" on Tone's clock. i grows by one every pass, so i * 0.4 pushes
 // every note 0.4 seconds later than the one before.
-// 12a Predict, in a comment: with four notes, when does the last note start?
+// 12a Predict, in a comment: with four notes, when does the last note start?// 1.2 sec
 // TODO 12b: give the note a start time:
 //             synth.triggerAttackRelease(melody[i], "8n", Tone.now() + i * 0.4);
-//           Add the start time to the console.log too, and check your prediction.
+
+//          Add the start time to the console.log too, and check your prediction.
 // 12c Take away  Tone.now() +  and press a again, a few seconds after the page loaded.
 //     What happens? Put it back. (A plain number means "this many seconds after the sound
 //     started on this page", and that moment has already gone.)

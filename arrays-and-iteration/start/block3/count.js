@@ -29,7 +29,14 @@ console.log("C4 comes " + count + " times");
 //            - notes that are "E4" or "G4"            (||)
 //            - notes in the first half of the melody  (a test on i, not on melody[i])
 //            - every note: what should that count be, without the loop?
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+let machine = 0;
 
+for (i=0; i <= numbers.length; i++);
+  if (numbers[2] && numbers[4] === 3 && 5) {
+    machine++;
+  }
+console.log("3 + 5 equals 8");
 // ---------- Exercise 11: trace it by hand ----------
 // A short melody, so you can follow every pass.
 let short = ["E4", "C4", "G4", "C4"];

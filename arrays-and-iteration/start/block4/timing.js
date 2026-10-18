@@ -8,13 +8,13 @@ const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 let melody = ["C4", "E4", "G4", "B4"];
 // TODO 14a: a second, longer list:  let bass = ["A2", "C3", "E3", "A3", "C4"];
-//let bass = ["A2", "C3", "E3", "A3", "C4"];
+let bass = ["A2", "C3", "E3", "A3", "C4"];
 
 // Plays every note in melody. All the notes start at once.
-function playMelody() {
-  for (let i = 0; i < melody.length; i++) {
-    console.log("pass " + i + ": " + melody[i] + i * 0.4);
-    synth.triggerAttackRelease(melody[i], "8n", Tone.now() + i * 0.2);
+function playNotes(notes) {
+  for (let i = 0; i < notes.length; i++) {
+    console.log("pass " + i + ": " + notes[i] + i * 0.4);
+    synth.triggerAttackRelease(notes[i], "8n", Tone.now() + i * 0.2);
   }
 }
 
@@ -52,7 +52,11 @@ function keyDown(event) {
   if (event.repeat === false) {
     if (event.key === "a") {
       console.log("---- melody ----");
-      playMelody();
+      playNotes(melody);
+    }
+    if (event.key === "b") {
+      console.log("---bass---");
+      playNotes(bass);
     }
   }
 }

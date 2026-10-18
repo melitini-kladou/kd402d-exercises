@@ -61,13 +61,23 @@ function playNotes(notes) {
 //           log "not in the melody" if it's still -1.
 // B2d Which index does findNote("G4") give back: the first G4 or the second? Why?
 
-// ---------- B3: two things in one walk ----------
+//
+//---------- B3: two things in one walk ----------
 // TODO B3: write describe(). One loop over melody keeps two running values at once:
 //            let count = 0;    how many notes are "C4"
 //            let played = "";  every note, joined:  played = played + melody[i] + " ";
 //          After the loop, log both. In keyDown, d calls describe().
 //          Predict both before you run it.
-
+let count = 0;
+let played = "";
+for (let i = 0; i < melody.length; i++) {
+  if (melody[i] === "C4") {
+    count++;
+  }
+  played = played + melody[i] + " ";
+}
+console.log("C4 count: " + count);
+console.log("played " + played);
 // ---------- Controls ----------
 
 function keyDown(event) {

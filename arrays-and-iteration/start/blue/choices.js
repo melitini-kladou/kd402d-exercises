@@ -7,10 +7,17 @@
 const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 let melody = ["C4", "E4", "G4", "C4", "A4", "G4", "E4", "C4"];
-
+let length = "8n";
 // Plays every note in a list, one every 0.4 seconds.
 function playNotes(notes) {
   for (let i = 0; i < notes.length; i++) {
+    if (notes[i] === "C4") {
+      length = "4n"; //C4 rings longer
+      console.log("The note C4 has "+ length + ".");
+  } else if (notes[i] === "G4") {
+      length = "16n";
+      console.log("The note G4 has " + length + ".");
+  }
     synth.triggerAttackRelease(notes[i], "8n", Tone.now() + i * 0.4);
   }
 }
@@ -32,6 +39,22 @@ function playNotes(notes) {
 //               console.log("found " + target + " at index " + i);
 //               break;   // leaves the loop straight away
 //             }
+
+  function findNote(target) {
+    let foundAt = -1;
+  for (i=0; i < melody.length; i++) {
+   console.log("checking index " + i);
+  if (melody[i] === target) {
+    foundAt = i;
+    console.log("found " + target + " at index " + i);
+    break;//leaves the loop straight away
+  }
+ }  if (foundAt === -1) {
+    console.log(target + " not in the melody");
+   }
+
+}
+
 // TODO B2b: in keyDown, f calls findNote("A4"). Predict how many indexes it checks.
 // TODO B2c: findNote("B4") is never found, and the loop logs nothing to say so. Fix it: before
 //           the loop,  let foundAt = -1;  set it when you find the note, and after the loop
@@ -46,12 +69,18 @@ function playNotes(notes) {
 //          Predict both before you run it.
 
 // ---------- Controls ----------
+
 function keyDown(event) {
   Tone.start(); // sound can only start after a key press or a click
   if (event.repeat === false) {
     if (event.key === "a") {
       playNotes(melody);
     }
+    if (event.key === "f") {
+      console.log("---- find A4 ----");
+      findNote("A4");
+    }
+
   }
 }
 

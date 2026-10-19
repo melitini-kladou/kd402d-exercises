@@ -5,7 +5,7 @@
 const synth = new Tone.Synth().toDestination();
 
 // ---------- Exercise 5: build a tone ----------
-let tone = { note: "C4", duration: "8n" };
+let tone = { note: "C4", duration: "8n", pitch: 0.4 };
 console.log(tone); // {note: 'C4', duration: '8n'}
 console.log(tone.note); // C4
 console.log(tone.duration); // 8n
@@ -20,7 +20,7 @@ tone.velocity = 0.8; // 7b: tone had no velocity, so this adds one
 console.log(tone["velocity"]); // 0.8
 // 7b: the line looks the same whether it adds or changes. It adds here because tone had no
 // velocity before; console.log(tone) now shows three parts.
-
+console.log(tone);
 // 7d: the label in a variable
 let label = "duration";
 console.log(tone[label]); // 8n: brackets use the value of label, "duration"

@@ -16,6 +16,7 @@ console.log(steps[1]); // {note: 'E4', duration: '4n'}: a position gives back th
 console.log(steps.length); // 2: it counts the steps, not their parts
 console.log(steps.note); // undefined
 // 9b: steps is the list, and a list has positions, not labels. Choose a step first: steps[0].note.
+console.log(steps[0].note);
 
 // ---------- Exercise 10: add a step ----------
 steps.push({ note: "G4", duration: "8n" });
@@ -28,6 +29,13 @@ steps.push({ note: "C5", duration: "2n" });
 // 11a: one line per step. From line to line only the position (0, 1, 2) and the start time
 // (+ 0, + 0.4, + 0.8) change. Everything else is the same: that's the loop, asking to be written.
 function playByHand() {
+  for (let i =0; i < steps.length; i++) {
+    synth.triggerAttackRelease(
+      steps[i].note,
+      steps[i].duration,
+      Tone.now() + i * 0.4,
+    );
+  }
   synth.triggerAttackRelease(steps[0].note, steps[0].duration, Tone.now());
   synth.triggerAttackRelease(
     steps[1].note,

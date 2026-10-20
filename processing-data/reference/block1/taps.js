@@ -9,6 +9,8 @@ let taps = [];
 
 // 1a: tapping quickly puts the numbers closer together. They're moments in time,
 //     and quick taps are close together in time.
+//let moments = Date.now();
+//console.log(moment);
 // 1b: Date.now() counts milliseconds since 1 January 1970, so it's huge. Only the last few
 //     digits change while you tap. The big number means nothing on its own; the differences do.
 
@@ -32,7 +34,7 @@ let taps = [];
 // ---------- Controls ----------
 function keyDown(event) {
   Tone.start(); // sound can only start after a key press or a click
-  if (event.repeat === false) {
+  if (event.repeat) return; {
     // 2c: only the first keydown of a held key
     if (event.key === " ") {
       taps.push(Date.now());

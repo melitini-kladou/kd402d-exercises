@@ -5,12 +5,14 @@
 const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 // Every tap is a moment in time. This list remembers when each one happened.
-let taps = [];
+//let taps = [];
 
 // 1a: tapping quickly puts the numbers closer together. They're moments in time,
 //     and quick taps are close together in time.
 //let moments = Date.now();
 //console.log(moment);
+//const now = Date.now();
+//taps.push(now);
 // 1b: Date.now() counts milliseconds since 1 January 1970, so it's huge. Only the last few
 //     digits change while you tap. The big number means nothing on its own; the differences do.
 
@@ -34,6 +36,7 @@ let taps = [];
 // ---------- Controls ----------
 function keyDown(event) {
   Tone.start(); // sound can only start after a key press or a click
+  let taps = [];
   if (event.repeat) return; {
     // 2c: only the first keydown of a held key
     if (event.key === " ") {
@@ -42,6 +45,7 @@ function keyDown(event) {
       synth.triggerAttackRelease("C4", "16n");
       if (taps.length > 1) {
         // 3c: only when there's a tap before this one
+    for (let i =1; i < taps.length; i++) {
         let i = taps.length - 1;
         let gap = taps[i] - taps[i - 1]; // 3a
         console.log("gap: " + gap + " ms");
@@ -50,7 +54,7 @@ function keyDown(event) {
       }
     }
   }
+ }
 }
-
 // ---------- Setup ----------
 window.addEventListener("keydown", keyDown);

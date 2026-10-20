@@ -5,14 +5,17 @@
 const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 // Every tap is a moment in time. This list remembers when each one happened.
-//let taps = [];
+let taps = [];
 
 // 1a: tapping quickly puts the numbers closer together. They're moments in time,
 //     and quick taps are close together in time.
 //let moments = Date.now();
 //console.log(moment);
-//const now = Date.now();
-//taps.push(now);
+const now = Date.now();
+taps.push(now);
+let i = taps.length - 1;
+let gap = taps[i] - taps[i - 1];
+
 // 1b: Date.now() counts milliseconds since 1 January 1970, so it's huge. Only the last few
 //     digits change while you tap. The big number means nothing on its own; the differences do.
 
@@ -32,11 +35,11 @@ const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 // 4b: 1000 / 250 is 4 taps per second. 1000 / 1000 is 1.
 // 4c: the rate. One number stands in for "how fast were they going".
-
+// The number that stands for "how fast they are going is probably the second one".
 // ---------- Controls ----------
 function keyDown(event) {
   Tone.start(); // sound can only start after a key press or a click
-  let taps = [];
+  //let taps = [];
   if (event.repeat) return; {
     // 2c: only the first keydown of a held key
     if (event.key === " ") {

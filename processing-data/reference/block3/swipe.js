@@ -33,7 +33,8 @@ function keyDown(event) {
   if (repeat === false) {
     held = held + 1;
     let position = row.indexOf(key);
-    console.log(key + " is at " + position); // 7b
+    //console.log(key + " is at " + position); // 7b
+    console.log(event.key + " is at " + row.indexOf(event.key));
     if (position !== -1) {
       swipe.push(position); // 8a: only keys in the row
       console.log(swipe);

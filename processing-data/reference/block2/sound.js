@@ -27,12 +27,17 @@ function keyDown(event) {
         console.log("gap: " + gap + " ms, " + rate + " taps per second");
 
         let length = gap / 1000; // 5a: the gap, in seconds
+        synth.triggerAttackRelease("C4", length);
+
         if (length > 1) {
           length = 1; // 5c: never longer than 1 second
+        //synth.triggerAttackRelease(note, length);
         }
         let note = "C4";
         if (rate > 4) {
           note = "G4"; // 6a: fast taps, higher note
+          synth.triggerAttackRelease("G4", length);
+
         }
         synth.triggerAttackRelease(note, length);
       }

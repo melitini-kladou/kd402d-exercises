@@ -14,7 +14,7 @@ const shape = createShape();
 let inside = false; // is the pointer on the shape?
 let lastX = 0;
 let lastY = 0;
-let lastTime = 0;
+let lastTime = Date.now();
 let speeds = [];
 
 // ---------- Sound ----------
@@ -56,10 +56,8 @@ function pointerEnter(event) {
   lastX = event.clientX / window.innerWidth;
   lastY = event.clientY / window.innerHeight;
   lastTime = Date.now();
-  //let seconds = (now - lastTime) / 1000;
-  /*if (seconds === 0) {
-    return;
-  }*/
+
+  speeds = [];
 }
 
 function pointerLeave(event) {
@@ -70,18 +68,55 @@ function pointerLeave(event) {
 
 function pointerMove(event) {
   // TODO 12a, 13a go here
+  if (!inside) {return;}
+
 let normX = event.clientX / window.innerWidth;
 let normY = event.clientY / window.innerHeight;
 let now = Date.now();
+
+
+
 let distance = Math.hypot(normX - lastX, normY - lastY);
 let seconds = (now - lastTime) / 1000;
 let speed = distance / seconds;
 lastX = normX;
 lastY = normY;
 lastTime = now;
-if (!inside) {return;}
+
+speeds.push(speed);
+setTimeout(forgetOldest, 500);
+useAverage();
+
 console.log(speed);
 }
+
+
+function forgetOldest() {
+  if (speeds.length > 0) {
+    speeds.shift();
+  }
+useAverage();
+}
+
+function useAverage() {
+  let total = 0;
+  for (let i = 0; i < speeds.length; i++) {
+    total = total + speeds[i];
+  }
+
+  let average = 0;
+  if (speeds.length > 0) {
+    average = total / speeds.length;
+  }
+
+  //13b set volume from avarage
+  let volume = -30; + average * 10;//-30 is nearly silent, 0 is full.
+  if (volume > 0) {
+    volume = 0;
+  }
+  synth.volume.value = volume;
+}
+
 
 // ---------- Setup ----------
 function setup() {

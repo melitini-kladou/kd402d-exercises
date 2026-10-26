@@ -15,7 +15,8 @@ let lastY = 0;
 let lastTime = 0;
 let speeds = [];
 let lastPress = 0; // for B3: when the pointer last went down
-
+// Setting:
+const memory = 500;
 // ---------- B1: two pipelines at once ----------
 // Position and speed are two different raw values. Give each its own job.
 // TODO B1a: let normX bend the note: synth.detune.value = normX * 1200;

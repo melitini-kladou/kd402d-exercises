@@ -52,8 +52,11 @@ function startSound(event) {
 
 // ---------- Setup ----------
 function setup() {
+  shape.setSize(150);
+  shape.setColour(200, 80, 50);
+  shape.setPosition(0.5, 0.5);
   // TODO 1a goes here
-
+//1b when setPosition is (1, 1) the shape is not on the screen.
   window.addEventListener("pointerdown", startSound);
   // TODO 2a, 3a and 4a: listen on shape.element here
 }

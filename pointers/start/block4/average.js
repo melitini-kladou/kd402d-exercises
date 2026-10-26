@@ -13,6 +13,7 @@ let playing = false; // is the held note on?
 let lastX = 0;
 let lastY = 0;
 let lastTime = 0;
+let stopTimer;
 
 // The speeds we remember. The average of these bends the note.
 let speeds = [];
@@ -79,16 +80,34 @@ function pointerMove(event) {
   synth.detune.value = speed * 300;
   // TODO 9a, 9b and 9c go here
   speeds.push(speed);
-  if (speed.length > 10) {
+  setTimeout(forgetOldest, 500);
+  useAvarage();
+
+
+  function forgetOldest() {
     speeds.shift();
+    useAvarage();
   }
-  let total = 0;
-  for ( let i = 0; i < speeds.length; i++) {
-    total = total + speeds[i];
+
+  function useAvarage() {
+    let total = 0;
+    for (let i = 0; i < speeds.length; i++) {
+      total = total + speeds[i];
+    }
+    let avarage = 0;
+    if (speeds.length > 0) {
+avarage = total / speeds.length;
+    }
+    synth.detune.value = avarage * 300;
   }
-  let average = total / speeds.length;
-  console.log(speeds.length);
-}
+  clearTimeout(stopTimer);
+  stopTimer = setTimeout(function() {
+    synth.detune.value = 0;
+  }, 100);
+
+  }
+
+
 
 // ---------- Setup ----------
 window.addEventListener("keydown", keyDown);

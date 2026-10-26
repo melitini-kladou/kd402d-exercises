@@ -45,6 +45,9 @@ let lastTime = 0;
 // ---------- Keyboard: the space bar starts and stops a held note ----------
 function keyDown(event) {
   Tone.start(); // sound can only start after a key press or a click
+  if (seconds === 0) {
+    return;
+  }
   if (event.key === " " && event.repeat === false) {
     if (playing) {
       synth.triggerRelease();
@@ -60,6 +63,12 @@ function pointerMove(event) {
   let normX = event.clientX / window.innerWidth;
   let normY = event.clientY / window.innerHeight;
   // TODO 7a and 8a go here
+  let now = Date.now();
+  let distance = Math.hypot(normX - lastX, normY - lastY);
+  let seconds = (now - lastTime) / 1000;
+  let speed = distance / seconds;
+  //console.log(speed);
+  //7b: speed = 1?
 }
 
 // ---------- Setup ----------

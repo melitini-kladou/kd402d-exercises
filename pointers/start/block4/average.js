@@ -78,6 +78,16 @@ function pointerMove(event) {
 
   synth.detune.value = speed * 300;
   // TODO 9a, 9b and 9c go here
+  speeds.push(speed);
+  if (speed.length > 10) {
+    speeds.shift();
+  }
+  let total = 0;
+  for ( let i = 0; i < speeds.length; i++) {
+    total = total + speeds[i];
+  }
+  let average = total / speeds.length;
+  console.log(speeds.length);
 }
 
 // ---------- Setup ----------

@@ -17,6 +17,7 @@ let speeds = [];
 let lastPress = 0; // for B3: when the pointer last went down
 // Setting:
 const memory = 500;
+let notes = ("C4", "E4", "G4");
 // ---------- B1: two pipelines at once ----------
 // Position and speed are two different raw values. Give each its own job.
 // TODO B1a: let normX bend the note: synth.detune.value = normX * 1200;
@@ -97,6 +98,16 @@ function useAverage() {
 function pointerDown(event) {
   Tone.start();
   // TODO B3a and B3b go here
+  let now = Date.now();
+  let timeSinceLastPress = now - lastPress;
+
+  if (timeSinceLastPress < 600) {
+    synth.triggerAttackRelease(notes, "8n");
+    lastPress = 0;
+  } else {
+    synth.triggerAttackRelease("C4", "8n");
+    lastPress = now;
+  }
 }
 
 // ---------- Setup ----------

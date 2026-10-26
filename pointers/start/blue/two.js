@@ -21,7 +21,7 @@ let lastPress = 0; // for B3: when the pointer last went down
 // TODO B1a: let normX bend the note: synth.detune.value = normX * 1200;
 // TODO B1b: let the average speed set the volume instead, in useAverage:
 //             -30 when still, up to 0 when fast (and never above 0).
-// B1c In a comment: can you now play a melody with x while the speed sets how loud it is?
+// B1c In a comment: can you now play a melody with x while the speed sets how loud it is?//no
 
 // ---------- B2: how long should a speed count? ----------
 // TODO B2a: put the 500 in a setting at the top, const memory = 500; and use it in setTimeout.
@@ -66,6 +66,7 @@ function pointerMove(event) {
   setTimeout(forgetOldest, 500);
   useAverage();
   // TODO B1a goes here
+  synth.detune.value = normX * 1200;
 }
 
 function forgetOldest() {
@@ -82,8 +83,14 @@ function useAverage() {
   if (speeds.length > 0) {
     average = total / speeds.length;
   }
-  synth.detune.value = average * 300;
+  //synth.detune.value = average * 300;
   // TODO B1b: replace the line above
+  let volume = -30 + average * 30;
+  if (volume > 0) {
+    volume = 0;
+  }
+  synth.volume.value = volume;
+
 }
 
 function pointerDown(event) {

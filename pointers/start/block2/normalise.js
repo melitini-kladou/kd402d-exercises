@@ -71,6 +71,14 @@ function stopNote(event) {
 // ---------- Pointer ----------
 function pointerMove(event) {
   // TODO 5a, 5c, 5e and 6a go here
+  console.log(event.clientX);//The far right edge reads 704.
+  //5b: the number is smaller (607) because the size of the window is smaller, so fewer pixels?
+  let normX = event.clientX / window.innerWidth;
+  console.log(normX);
+  let normY = event.clientY / window.innerHeight;
+  console.log(normY);
+
+  synth.detune.value = normX * 1200;
 }
 
 // ---------- Setup ----------

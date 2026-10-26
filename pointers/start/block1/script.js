@@ -59,17 +59,30 @@ function setup() {
 //1b when setPosition is (1, 1) the shape is not on the screen.
   window.addEventListener("pointerdown", startSound);
   // TODO 2a, 3a and 4a: listen on shape.element here
+  shape.element.addEventListener("pointerdown", pointerDown);
+  shape.element.addEventListener("pointerup", pointerUp);
+
   shape.element.addEventListener("pointerenter", pointerEnter);
   // TODO 2c:
   shape.element.addEventListener("pointerleave", pointerLeave);
 
 
   function pointerEnter(event) {
-    synth.triggerAttackRelease(note, "8n");
+    //synth.triggerAttackRelease(note, "8n");
+    synth.triggerAttack(note, "4n");
   }
 
   function pointerLeave(event) {
-    synth.triggerAttackRelease("C4", "16n");//a lower note, shorter duration.
+    //synth.triggerAttackRelease("C4", "16n");//a lower note, shorter duration.
+    synth.triggerRelease();// 3b: if you forget the pointerLeave listener the note keeps playing even if the pointer is not on the shape.
+  }
+
+  function pointerDown(event) {
+    synth.triggerAttack("C4");
+  }
+
+  function pointerUp(event) {
+    synth.triggerRelease();
   }
 }
 

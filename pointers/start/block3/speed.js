@@ -13,7 +13,7 @@ let playing = false; // is the held note on?
 let lastX = 0;
 let lastY = 0;
 let lastTime = 0;
-
+let seconds = 0;
 // ---------- Exercise 7: keep the last one, compare ----------
 // We stay in normalised numbers, so speed means the same on any screen:
 // how much of the screen you cross in one second.
@@ -45,9 +45,7 @@ let lastTime = 0;
 // ---------- Keyboard: the space bar starts and stops a held note ----------
 function keyDown(event) {
   Tone.start(); // sound can only start after a key press or a click
-  if (seconds === 0) {
-    return;
-  }
+
   if (event.key === " " && event.repeat === false) {
     if (playing) {
       synth.triggerRelease();
@@ -62,13 +60,25 @@ function keyDown(event) {
 function pointerMove(event) {
   let normX = event.clientX / window.innerWidth;
   let normY = event.clientY / window.innerHeight;
+ // if (seconds === 0) {
+    //return;
+  //}
   // TODO 7a and 8a go here
   let now = Date.now();
   let distance = Math.hypot(normX - lastX, normY - lastY);
   let seconds = (now - lastTime) / 1000;
   let speed = distance / seconds;
+  if (seconds === 0) {
+    return;
+  }
   //console.log(speed);
   //7b: speed = 1?
+  if (playing) {
+    synth.detune.value = speed * 300;
+  }
+  lastX = normX;
+  lastY = normY;
+  lastTime = now;
 }
 
 // ---------- Setup ----------

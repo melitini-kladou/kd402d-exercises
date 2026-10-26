@@ -53,6 +53,13 @@ function pointerEnter(event) {
   synth.triggerAttack(note);
   shape.setColour(50, 100, 60);
   // TODO 12c goes here
+  lastX = event.clientX / window.innerWidth;
+  lastY = event.clientY / window.innerHeight;
+  lastTime = Date.now();
+  //let seconds = (now - lastTime) / 1000;
+  /*if (seconds === 0) {
+    return;
+  }*/
 }
 
 function pointerLeave(event) {
@@ -63,6 +70,17 @@ function pointerLeave(event) {
 
 function pointerMove(event) {
   // TODO 12a, 13a go here
+let normX = event.clientX / window.innerWidth;
+let normY = event.clientY / window.innerHeight;
+let now = Date.now();
+let distance = Math.hypot(normX - lastX, normY - lastY);
+let seconds = (now - lastTime) / 1000;
+let speed = distance / seconds;
+lastX = normX;
+lastY = normY;
+lastTime = now;
+if (!inside) {return;}
+console.log(speed);
 }
 
 // ---------- Setup ----------
